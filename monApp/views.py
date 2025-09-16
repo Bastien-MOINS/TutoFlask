@@ -1,16 +1,28 @@
 from .app import app
-
+from flask import render_template, request
+from monApp.models import Auteur
 @app.route('/')
+@app.route('/index/')
 def index():
-    return "Hello world !"
+    # si pas de paramètres
+    if len(request.args)==0:
+        return render_template("index.html",title="R3.01 Dev Web avec Flask",name="Cricri")
+    else :
+        param_name = request.args.get('name')
+        return render_template("index.html",title="R3.01 Dev Web avec Flask",name=param_name)
 
 if __name__ == "__main__":
     app.run()
 
 @app.route('/about')
 def about():
-    return app.config['ABOUT']
+    return render_template("about.html",title ="R3.01 Dev Web avec Flask",name="Cricri")
 
 @app.route('/contact')
 def contact():
-    return app.config['CONTACT']
+    return render_template("contact.html",title ="R3.01 Dev Web avec Flask",name="Cricri")
+
+@app.route('/auteurs/')
+def getAuteurs():
+ lesAuteurs = Auteur.query.all()
+ return render_template('auteurs_list.html', title="R3.01 Dev Web avec Flask", auteurs=lesAuteurs)
