@@ -22,9 +22,10 @@ class Livre(db.Model):
     def __repr__ (self):
         return "<Livre (%d) %s>" % (self.idL , self.Titre)
 
-def __init__(self, id, prix, titre, url, img):
+def __init__(self, id, prix, titre, url, img, idA):
     self.IdL = id
     self.Prix = prix
     self.Titre = titre
     self.Url = url
     self.Img = img
+    self.auteur_id = idA

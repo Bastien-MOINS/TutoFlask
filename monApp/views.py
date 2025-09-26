@@ -1,6 +1,6 @@
 from .app import app
 from flask import render_template, request
-from monApp.models import Auteur
+from monApp.models import Auteur, Livre
 @app.route('/')
 @app.route('/index/')
 def index():
@@ -26,3 +26,8 @@ def contact():
 def getAuteurs():
  lesAuteurs = Auteur.query.all()
  return render_template('auteurs_list.html', title="R3.01 Dev Web avec Flask", auteurs=lesAuteurs)
+
+@app.route('/livres/')
+def getLivres():
+    lesLivres = Livre.query.all()
+    return render_template('livres_html.html',title = "R3.01 Dev Web avec Flask", livres=lesLivres)
