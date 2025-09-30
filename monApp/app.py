@@ -11,3 +11,7 @@ app.config['CONTACT']
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy(app)
 #db.init_app(app)
+
+#BOOTSTRAP
+from flask_bootstrap5 import Bootstrap
+Bootstrap(app)
