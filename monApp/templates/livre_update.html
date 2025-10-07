@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h1 >Modification du livre {{ selectedLivre.Titre }} de {{ selectedLivre.auteur_id }}</h1>
+<form role="form" method="POST" action="{{ url_for ('saveLivre') }}">
+    {{ updateForm.hidden_tag () }}
+    <div
+        {% if updateForm.Titre.errors %}
+            class="form-group has-error"
+        {% else %}
+            class="form-group mb-3"
+        {% endif %}
+    >
+    {{ updateForm.Titre.label }} {{ updateForm.Titre(size =50) }}
+    {{ updateForm.Prix.label }} {{ updateForm.Prix(size =50) }}
+    {{ updateForm.Titre.label }} {{ updateForm.Titre(size =50) }}
+    {{ updateForm.Url.label }} {{ updateForm.Url(size =50) }}
+    {{ updateForm.Img.label }} {{ updateForm.Img(size =50) }}
+    {{ updateForm.auteur_id.label }} {{ updateForm.auteur_id(size =50) }}
+    </div>
+    {% if updateForm.Titre.errors %}
+        <ul class ="list-group">
+        {% for e in updateForm.Titre.errors %}
+            <li class ="list-group-item list-group-item-danger" >{{ e }} </li >
+        {% endfor %}
+        </ul>
+    {% endif %}
+    <input class ="btn btn-success" type="submit" value ="Enregistrer">
+    <a href="{{ url_for('getLivres') }}" class="btn btn-secondary">Retour</a>
+</form >
+{% endblock %}
