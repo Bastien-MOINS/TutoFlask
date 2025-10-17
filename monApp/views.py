@@ -129,4 +129,3 @@ def viewLivre(IdL):
     unLivre = Livre.query.get(IdL)
     unForm = FormLivre(IdL=unLivre.IdL , Titre=unLivre.Titre, Prix=unLivre.Prix)
     return render_template("livre_view.html",selectedLivre=unLivre, viewForm=unForm)
-

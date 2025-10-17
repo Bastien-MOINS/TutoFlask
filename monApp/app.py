@@ -15,8 +15,3 @@ db = SQLAlchemy(app)
 #BOOTSTRAP
 from flask_bootstrap5 import Bootstrap
 Bootstrap(app)
-
-#activer le plugin login user
-from flask_login import LoginManager
-login_manager = LoginManager(app)
-
