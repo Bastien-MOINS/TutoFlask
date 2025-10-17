@@ -8,12 +8,6 @@
         {{ viewForm.Titre(size=50, disabled=True, class_="form-control") }}
         {{ viewForm.Prix.label }}
         {{ viewForm.Prix(size=50, disabled=True, class_="form-control") }}
-        {{ viewForm.Url.label }}
-        {{ viewForm.Url(size=50, disabled=True, class_="form-control") }}
-        {{ viewForm.Img.label }}
-        {{ viewForm.Img(size=50, disabled=True, class_="form-control") }}
-        {{ viewForm.auteur_id.label }}
-        {{ viewForm.auteur_id(size=50, disabled=True, class_="form-control") }}
     </div>
     <a href="{{ url_for('getLivres') }}" class="btn btn-secondary">Retour</a>
 </form>

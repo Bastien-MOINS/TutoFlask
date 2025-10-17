@@ -13,6 +13,8 @@
     >
     {{ createForm.Nom.label }}
     {{ createForm.Nom(size =50, class_="form-control") }}
+    {{ createForm.Prix.label }}
+    {{ createForm.Prix(size =50, class_="form-control") }}
     </div>
     {% if createForm.Nom.errors %}
         <ul class ="list-group">

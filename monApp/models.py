@@ -22,10 +22,24 @@ class Livre(db.Model):
     def __repr__ (self):
         return "<Livre (%d) %s>" % (self.IdL , self.Titre)
 
-def __init__(self, id, prix, titre, url, img, idA):
+def __init__(self, id, prix, titre, url, img, auteur_id):
     self.IdL = id
     self.Prix = prix
     self.Titre = titre
     self.Url = url
     self.Img = img
-    self.auteur_id = idA
+    self.auteur_id = auteur_id
+
+from flask_login import UserMixin
+
+class User(db.Model, UserMixin):
+    Login = db.Column (db.String(50), primary_key=True)
+    Password = db.Column (db.String(64))
+
+    def get_id(self):
+        return self.Login
+
+from .app import login_manager
+@login_manager.user_loader
+def load_user(username):
+    return User.query.get(username)

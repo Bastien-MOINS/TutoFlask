@@ -118,14 +118,15 @@ def saveLivre():
     #si les données saisies sont valides pour la mise à jour
     if unForm.validate_on_submit():
         updatedLivre.Titre = unForm.Titre.data
+        updatedLivre.Prix = float(unForm.Prix.data)
         db.session.commit()
         return redirect(url_for('viewLivre', IdL=updatedLivre.IdL))
 
-    return render_template("livre_update.html",selectedAuteur=updatedLivre, updateForm=unForm)
+    return render_template("livre_update.html",selectedLivre=updatedLivre, updateForm=unForm)
 
 @app.route('/livres/<IdL>/view/')
 def viewLivre(IdL):
     unLivre = Livre.query.get(IdL)
-    unForm = FormLivre (IdL=unLivre.IdL , Titre=unLivre.Titre)
+    unForm = FormLivre(IdL=unLivre.IdL , Titre=unLivre.Titre, Prix=unLivre.Prix)
     return render_template("livre_view.html",selectedLivre=unLivre, viewForm=unForm)
 

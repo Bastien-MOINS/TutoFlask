@@ -35,3 +35,41 @@ def loaddb(filename):
         db.session.add(objet)
     db.session.commit()
 lg.warning('Database initialized!')
+
+@app.cli.command()
+def syncdb():
+    '''Creates all missing tables . '''
+    db.create_all()
+    lg.warning('Database synchronized!')
+
+@app.cli.command()
+@click.argument('login')
+@click.argument('pwd')
+def newuser (login, pwd):
+    '''Adds a new user'''
+    from . models import User
+    from hashlib import sha256
+    m = sha256()
+    m.update(pwd.encode())
+    unUser = User(Login=login ,Password =m.hexdigest())
+    db.session.add(unUser)
+    db.session.commit()
+    lg.warning('User ' + login + ' created!')
+
+from sqlalchemy import text
+@app.cli.command()
+@click.argument('login')
+@click.argument('pwd')
+def newpasswrd(login,pwd):
+    '''Modify the passwrd of a user'''
+    from . models import User
+    from hashlib import sha256
+    user = User.query.get(login)
+    if not user:
+        print("Error DB: L'Utilisateur n'existe pas")
+    else:
+        m = sha256()
+        m.update(pwd.encode())
+        user.Password = m.hexdigest()
+        db.session.commit()
+        print(f"Le mot de passe pour l'utilisateur '{login}' a été modifié avec succès.")

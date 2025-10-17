@@ -10,6 +10,3 @@ class FormLivre(FlaskForm):
     IdL=HiddenField('IdL')
     Prix = StringField ('Prix', validators =[DataRequired()])
     Titre = StringField ('Titre', validators =[DataRequired()])
-    Url = StringField ('Url',validators =[DataRequired()])
-    Img = StringField ('Img', validators =[DataRequired()])
-    auteur_id = StringField ('idA', validators =[DataRequired()])
