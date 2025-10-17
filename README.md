@@ -1,1 +1,11 @@
-Bastien MOINS
+- Moins
+- Bastien
+- 3A
+Veuillez rentré ses commandes dans votre terminal avant de lancer l'application
+  - pip install flask
+  - pip install python-dotenv
+  - pip install flask-wtf
+  - pip install flask-sqlalchemy
+  - pip install pyyaml
+  - pip install Flask-Bootstrap5
+  - flask run
